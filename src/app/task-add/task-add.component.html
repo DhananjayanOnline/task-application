@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form action="" [formGroup]="taskForm" (ngSubmit)="createTask()">
+                <div class="mb-3">
+                    <input class="form-control" type="text" formControlName="task_name" placeholder="Enter taskname">
+                    <div class="form-text text-danger" *ngIf="task_name?.touched && task_name?.invalid">Task name cannot be empty</div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-success form-control" [disabled]="taskForm.invalid" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
