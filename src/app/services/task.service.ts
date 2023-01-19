@@ -50,5 +50,22 @@ export class TaskService {
       return new Promise((res,rej) => rej("Failed to fetch data from resource"))
     }
   }
+
+  removeTask(id:number){
+    let token = localStorage.getItem("token")
+    if(token){
+      let options = {
+        "method": "delete",
+        "headers": {
+          "content-type": "application/json",
+          "Authorization": token
+        }
+      }
+      return fetch(`http://127.0.0.1:8000/tasks/${id}/`, options)
+    }else{
+      return new Promise((res,rej) => rej("Failed to fetch data from resource"))
+    }
+  }
+
 }
 
