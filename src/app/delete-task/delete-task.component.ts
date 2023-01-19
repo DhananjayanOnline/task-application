@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-task.component.css']
 })
 export class DeleteTaskComponent {
-
+  
 }

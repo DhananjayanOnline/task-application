@@ -4,7 +4,8 @@
         <div class="col-6">
             <div class="card" style="width: 100%">
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item" *ngFor="let t of allTasks">{{t.task_name}}  {{t.status}} <small>{{t.date}}</small></li>
+                    <li class="list-group-item" *ngFor="let t of allTasks">{{t.task_name}} {{t.status}}
+                        <small>{{t.date}}</small> <button class="btn text-danger" (click)="deleteTask(t.id)">delete</button></li>
                 </ul>
             </div>
         </div>

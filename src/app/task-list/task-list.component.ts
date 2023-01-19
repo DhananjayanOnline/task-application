@@ -7,7 +7,7 @@ import { TaskService } from '../services/task.service';
   styleUrls: ['./task-list.component.css']
 })
 
-export class TaskListComponent implements OnInit, DoCheck {
+export class TaskListComponent implements OnInit {
 
   allTasks:any
 
@@ -27,8 +27,14 @@ export class TaskListComponent implements OnInit, DoCheck {
   //     }
   // }
 
-  ngDoCheck(): void {
-    this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
+  // ngDoCheck(): void {
+  //   this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
+  // }
+
+  deleteTask(id:number){
+    alert(id)
+    
+    this.service.removeTask(id).then((res:any)=> res.json()).then(data=> console.log(data))
   }
 }
 
