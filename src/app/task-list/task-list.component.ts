@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { TaskService } from '../services/task.service';
   styleUrls: ['./task-list.component.css']
 })
 
-export class TaskListComponent implements OnInit, OnChanges {
+export class TaskListComponent implements OnInit, DoCheck {
 
   allTasks:any
 
@@ -19,12 +19,16 @@ export class TaskListComponent implements OnInit, OnChanges {
       this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-      if(this.inpt){
-        console.log(this.inpt);
+  // ngOnChanges(changes: SimpleChanges): void {
+  //     if(this.inpt){
+  //       console.log(this.inpt);
         
-        this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
-      }
+  //       this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
+  //     }
+  // }
+
+  ngDoCheck(): void {
+    this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
   }
 }
 

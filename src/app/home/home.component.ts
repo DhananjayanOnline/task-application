@@ -5,10 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent {
   isTaskAdded:boolean=false
 
   publish(data:boolean){
     this.isTaskAdded=data
+    console.log("inside publish method", data);
+    
   }
 }
