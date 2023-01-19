@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { NavComponent } from './nav/nav.component';
+import { DeleteTaskComponent } from './delete-task/delete-task.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavComponent } from './nav/nav.component';
     HomeComponent,
     TaskAddComponent,
     TaskListComponent,
-    NavComponent
+    NavComponent,
+    DeleteTaskComponent
   ],
   imports: [
     BrowserModule,
