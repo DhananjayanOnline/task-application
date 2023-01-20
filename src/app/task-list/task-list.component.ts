@@ -7,7 +7,7 @@ import { TaskService } from '../services/task.service';
   styleUrls: ['./task-list.component.css']
 })
 
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnChanges{
 
   allTasks:any
 
@@ -19,22 +19,20 @@ export class TaskListComponent implements OnInit {
       this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //     if(this.inpt){
-  //       console.log(this.inpt);
+  ngOnChanges(): void {
+      if(this.inpt){
+        console.log(this.inpt);
         
-  //       this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
-  //     }
-  // }
+        this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
+      }
+  }
 
   // ngDoCheck(): void {
   //   this.service.listTask().then((res:any)=> res.json()).then(data=> this.allTasks=data).catch(err=> alert(err))
   // }
 
   deleteTask(id:number){
-    alert(id)
-    
-    this.service.removeTask(id).then((res:any)=> res.json()).then(data=> console.log(data))
+    this.service.removeTask(id).then((res:any)=> this.ngOnChanges())
   }
 }
 

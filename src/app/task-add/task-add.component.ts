@@ -10,23 +10,26 @@ import { TaskService } from '../services/task.service';
 })
 export class TaskAddComponent {
 
-  constructor(private service:TaskService){}
+  constructor(private service: TaskService) { }
 
-  @Output()notify:EventEmitter<boolean> = new EventEmitter<boolean>
+  @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>
 
   taskForm = new FormGroup({
     "task_name": new FormControl("", [Validators.required])
   })
 
-  get task_name(){
+  get task_name() {
     return this.taskForm.get("task_name")
   }
 
-  createTask(){
-    let data=this.taskForm.value
-    this.service.addTask(data).then((res:any)=> res.json()).then(data=> console.log("TASK CREATED!!!!")).catch(err=> alert(err))
-    
-    this.notify.emit(true) //event emting for child perent communication
+  createTask() {
+    this.notify.emit(false)
+    let data = this.taskForm.value
+    this.service.addTask(data).then((res: any) => res.json()).then(data => {
+      console.log("TASK CREATED!!!!")
+      this.notify.emit(true)
+    }).catch(err => alert(err))
+
   }
 
 }
